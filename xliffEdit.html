@@ -16,10 +16,12 @@
 #note{ background-color: rgba(255, 0, 0, 0.3); }
 
 
-table {font-family: arial, sans-serif; border-collapse: collapse;   width: 100%;}
-td, th { border: 1px solid #dddddd;  text-align: left;  padding: 2px;}
+table { font-family: arial, sans-serif; border-collapse: collapse;   width: 100%;}
+td, th {  border: 1px solid #dddddd;  text-align: left;  padding: 2px;}
 tr:nth-child(even) { background-color: #dddddd;}
 
+#index { width: 3%; }
+#xliff {width: 48%;}
 
 </style>
 
@@ -138,14 +140,16 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
          cell = document.createElement('td');	 
          cellText = document.createTextNode(i+1);
          cell.appendChild(cellText);
-         hrow.appendChild(cell);	 	    
+         hrow.appendChild(cell);
+		 cell.setAttribute("id","index");
 	  
 	  
          cell = document.createElement('td');
          source=tchildren[0].innerHTML;		 
          cellText = document.createTextNode(source);
          cell.appendChild(cellText);
-         hrow.appendChild(cell);	 
+         hrow.appendChild(cell);
+         cell.setAttribute("id","xliff");		 
 		 
 	     target=tchildren[1].innerHTML; 
 		 targetNodes.push(tchildren[1]);
@@ -157,6 +161,7 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
 		 cell.setAttribute("onmouseout","modifyDOM(this)");
 		 cell.setAttribute("onclick","modifyDOMfromTMX(this)");
          hrow.appendChild(cell);
+		 cell.setAttribute("id","xliff");
         		 	
       tbody.appendChild(hrow);
 	 
@@ -298,7 +303,7 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
          cellText = document.createTextNode(source);
          cell.appendChild(cellText);
          hrow.appendChild(cell);	 
-		 
+		 cell.setAttribute("id","xliff");
 	     target=segments[++i].innerHTML; 
 		
          cell = document.createElement('td');	 
@@ -306,7 +311,7 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
          cellText = document.createTextNode(target);
          cell.appendChild(cellText);
          hrow.appendChild(cell);
-        		 
+         cell.setAttribute("id","xliff");		 
       tbody.appendChild(hrow);
 	 
  }
