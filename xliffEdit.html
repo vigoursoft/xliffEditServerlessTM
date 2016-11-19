@@ -15,46 +15,10 @@
 #tmx{ margin-top: 20px; height: 200px; overflow: auto;  background: rgba(255, 0, 0, 0.3); }
 #note{ background-color: rgba(255, 0, 0, 0.3); }
 
-table {
-	border-spacing: 0;
-	width: 100%;
-	border: 1px solid #dddddd;
-	border-collapse: separate;
-	border-left: 0;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
-}
 
-tbody>tr:nth-child(odd)>td {
-	background-color: lightGrey;
-}
-
-tr {
-	border-collapse: separate;
-}
-
-th,td {
-	padding: 8px;
-	line-height: 20px;
-	text-align: left;
-	vertical-align: top;
-	border-left: 1px solid #dddddd;
-}
-
-td {
-	border-top: 1px solid #dddddd;
-}
-
-tbody:last-child tr:last-child>td:first-child {
-	-webkit-border-bottom-left-radius: 4px;
-	border-bottom-left-radius: 4px;
-	-moz-border-radius-bottomleft: 4px;
-}
-
-tbody:last-child tr:last-child>td:last-child {
-	border-bottom-right-radius: 4px;
-}
+table {font-family: arial, sans-serif; border-collapse: collapse;   width: 100%;}
+td, th { border: 1px solid #dddddd;  text-align: left;  padding: 2px;}
+tr:nth-child(even) { background-color: #dddddd;}
 
 
 </style>
@@ -73,7 +37,7 @@ var xmlDoc;
 // keeping this global - might be a problem for large tmx docs
 var tmxDoc;
 
-var xliffName;
+
 var xliffContent;
 var tmxContent;
 
@@ -104,7 +68,8 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
                        var mac = e.target.result;
 					   
 					   if ( (f.name).endsWith("xliff") ){
-						 xliffName=f.name;
+						 
+						 localStorage.xliffName=f.name;
 						 xliffContent=mac;
 						 parseXliff();
 						}
@@ -219,6 +184,7 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
       var r = confirm("Source: "+ source+"\nTarget: \n"+segments[i+1].innerHTML);
         if (r == true) {
            x.innerHTML= segments[i+1].innerHTML;  document.getElementById("lastCellEdit").innerHTML=rowIndex;
+		   x.focus();
 		   break;
          } else {
          return;
@@ -289,7 +255,7 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
 	 	var a = document.createElement('a');
   	    a.href = window.URL.createObjectURL(blob);
 	    document.body.appendChild(a);
-	    a.download = "Exported.xliff";
+	    a.download = localStorage.xliffName;
         a.click();	
  
  }
