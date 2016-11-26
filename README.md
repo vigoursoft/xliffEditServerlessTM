@@ -10,12 +10,9 @@ It bills itself as a "proof of concept", with the concept being that modern web 
 Here is what the tool does:
 
 1) It provides a translation workbench for bilingual XLIFF source files.
-
 2) It allows using one bilingual TMX file as a read-only translation memory.
-
-
-This screenshot shows a test with a translation memory. The user has clicked on a target segment, and the tool found a 100% match (existing translation) in the TM. The user can confirm or cancel use of the existing translation.
-
+3) The latest version allows adding a multilingual term base .tbx. TBD: A search feature for the tbx.Right now, only the
+browser search or scrolling are available.
 
 
 Here are some notes and caveats:
@@ -29,12 +26,9 @@ Before closing the browser, always save the translation using the "Export" butto
 
 2) The current version has only been tested with Xliffs and TMX files produced by Memsource Cloud (tm).
 
-
 3) The current version has only been tested with Firefox.
 
-
 4) The only changes the tool makes to the XLIFF base file is adding or modifying translations, i.e. the contents of "target" elements. No other xml elements or attributes are modified.
-
 
 5) Existing context information or alternative translations are not shown.
 
